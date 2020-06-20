@@ -1,0 +1,97 @@
+org: jonathanlo
+app: serverless-email-pipeline-app
+# Name of the project.
+service: serverless-email-pipeline
+
+# Define what cloud provider we will use.
+provider:
+  name: aws
+  region: us-east-2
+  runtime: python3.7
+  stage: ${opt:stage, 'jlo1987'} # Unique name to our data pipeline stack.
+  # Add your own lambda_function role ARN here.
+  role: arn:aws:iam::330940850963:role/serverless-email-pipeline-lambda
+
+plugins:
+  - serverless-s3-remover
+
+custom:
+  bucket: ${self:service}-${self:provider.stage}
+  bucket_glue_scripts: ${self:custom.bucket}-glue-scripts
+  glue_crawler: load-${self:provider.stage}
+  glue_job: unzip-${self:provider.stage}
+  glue_job_script_location: s3://${self:custom.bucket_glue_scripts}/unzip.py
+  # Add your own glue role ARN here.
+  glue_role: arn:aws:iam::330940850963:role/serverless-email-pipeline-glue
+  athena_db: ${self:custom.bucket}
+  remover:
+    buckets:
+      - ${self:custom.bucket}
+      - ${self:custom.bucket_glue_scripts}
+
+functions:
+  unzip:
+    handler: lambda_function/unzip.handler
+    events:
+      - s3:
+          bucket: ${self:custom.bucket}
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: raw/
+            - suffix: .zip
+    environment:
+        DEST_BUCKET: ${self:custom.bucket}
+        DEST_KEY: unzip/
+        GLUE_JOB: ${self:custom.glue_job}
+
+  extract:
+    handler: lambda_function/extract.handler
+    events:
+      - s3:
+          bucket: ${self:custom.bucket}
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: unzip/
+            - suffix: .eml
+    environment:
+        DEST_BUCKET: ${self:custom.bucket}
+        DEST_KEY: extract/
+
+  load:
+    handler: lambda_function/load.handler
+    events:
+      - s3:
+          bucket: ${self:custom.bucket}
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: extract/
+            - suffix: .json
+    environment:
+      GLUE_CRAWLER: ${self:custom.glue_crawler}
+
+resources:
+  Resources:
+    GlueJob:
+      Type: AWS::Glue::Job
+      Properties: 
+        Role: ${self:custom.glue_role}
+        Command:   
+          Name: pythonshell  
+          ScriptLocation: ${self:custom.glue_job_script_location}
+        Name: ${self:custom.glue_job}
+
+    S3GlueScripts:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.bucket_glue_scripts}
+
+    GlueCrawler:
+      Type: AWS::Glue::Crawler
+      Properties:
+        DatabaseName: ${self:custom.athena_db}
+        Name: ${self:custom.glue_crawler}
+        Role: ${self:custom.glue_role}
+        TablePrefix: messages_
+        Targets:
+          S3Targets:
+            -  Path: s3://${self:custom.bucket}/extract/
