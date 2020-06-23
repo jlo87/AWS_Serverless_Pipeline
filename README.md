@@ -20,8 +20,10 @@ Create an admin User using the AWS IAM Management Console to set the credentials
 
 `/.aws/credentials` with the name `serverless`. By adding the credentials to the AWS credentials file, you can use any AWS command using the desired profile. It should look something like this:
 
-`[serverless]
-aws_access_key_id = 'enter_your_access_key_id'
+`[serverless]`
+
+`aws_access_key_id = 'enter_your_access_key_id'
+
 aws_secret_access_key = 'enter_your_secret_access_key_id'`
 
 ### Step 2: Create the necessary roles with attached permissions policies
@@ -37,6 +39,7 @@ After creating the roles, copy the [ARN](https://docs.aws.amazon.com/general/lat
 Create a folder with the name of the project (you can use any name, but I named my folder _serverless_email_pipeline_:
 
 `$ mkdir serverless_email_pipeline`
+
 `$ serverless_email_pipeline`
 
 Then we will want to export the serverless AWS profile we just created so that you use the correct credentials when we deploy the infrastructure. To make sure the AWS_PROFILE environment variable is set to `serverless`, execute the following statement:
