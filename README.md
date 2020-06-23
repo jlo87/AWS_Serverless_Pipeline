@@ -20,10 +20,8 @@ Create an admin User using the AWS IAM Management Console to set the credentials
 
 `/.aws/credentials` with the name `serverless`. By adding the credentials to the AWS credentials file, you can use any AWS command using the desired profile. It should look something like this:
 
-`[serverless]`
-
-`aws_access_key_id = 'enter_your_access_key_id'
-
+`[serverless]
+aws_access_key_id = 'enter_your_access_key_id'
 aws_secret_access_key = 'enter_your_secret_access_key_id'`
 
 ### Step 2: Create the necessary roles with attached permissions policies
