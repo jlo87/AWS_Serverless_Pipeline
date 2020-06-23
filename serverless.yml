@@ -10,7 +10,7 @@ provider:
   runtime: python3.7
   stage: ${opt:stage, 'jlo1987'} # Unique name to our data pipeline stack.
   # Add your own lambda_function role ARN here.
-  role: arn:aws:iam::330940850963:role/serverless-email-pipeline-lambda
+  role: arn:aws:iam::your_aws_account_id_goes_here:role/serverless-email-pipeline-lambda
 
 plugins:
   - serverless-s3-remover
@@ -22,7 +22,7 @@ custom:
   glue_job: unzip-${self:provider.stage}
   glue_job_script_location: s3://${self:custom.bucket_glue_scripts}/unzip.py
   # Add your own glue role ARN here.
-  glue_role: arn:aws:iam::330940850963:role/serverless-email-pipeline-glue
+  glue_role: arn:aws:iam::your_aws_account_id_goes_here:role/serverless-email-pipeline-glue
   athena_db: ${self:custom.bucket}
   remover:
     buckets:
