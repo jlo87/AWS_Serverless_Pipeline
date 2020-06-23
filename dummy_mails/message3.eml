@@ -1,0 +1,136 @@
+Delivered-To: vincent.v.claes@gmail.com
+Received: by 2002:a67:ca94:0:0:0:0:0 with SMTP id a20csp8141575vsl;
+        Tue, 9 Jul 2019 12:46:33 -0700 (PDT)
+X-Received: by 2002:aa7:d7d2:: with SMTP id e18mr21879220eds.286.1562701593251;
+        Tue, 09 Jul 2019 12:46:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562701593; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lrF4VEdU0X+jHDHPlCrBBTO8GQYKyiIHo4Nf8Ek9BEvWQ2oehjrcWdDAWkefAeZDDW
+         b+cbkwQWTtvAK5W0+L4Pr0Gohrb2Wj4gdRwgEfyFuzDaNB8mDyoobcOH3so4G5hNpeob
+         N+FLAEcmsuQf7o/D9ayBerXNwrk8MdAUl2VHsQfK5931+68Cxh0fpa2SWZdS/MOBRGnj
+         81q+nN0/o14UDl7iMTxfaEvksWntVXa+FLqawnbZNgKVxfT/PC3wrP7C7UTtG41Z2YTH
+         35SZDGP5hANXmifGGjXcLAwaB6avb2lYyGD3f+DO9HDZWY+MGCmNJEuvtobVh5kaKNwd
+         kmJA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=references:to:cc:in-reply-to:date:subject:mime-version:message-id
+         :from:dkim-signature;
+        bh=f4AkhzfrRy4Tq4DoBdF5FZKfictTxN45+A4hWRisxc0=;
+        b=lxLEBQ94npWSSDJScky2bqpA0wyo6PfKS48Dlfkfk/lHUdA7CFYkq6wb4vcqTSOn6V
+         UXMzwmG6rsP/OUN3HRZtxPLyxnz0aB3ZkaWztCA2o6JOueI/OmRUH3LEV8xr6YofJXbl
+         ZxoMNk2rLFa1nxE2j2VBgyeWSS11OojrSV8BqFnn20KHiTWWKdWi60VG2AI0mwj4S/uo
+         JfnbTUaXWnWArThPEsckGb5AOOMg3Iyqr03sjqnbnlmLbDzeVkxR5PEn88gStAnBNl4Q
+         XHk5JEnaygv+kIHw0dW9IfQPfQixYVaUjUoMnxYFA/W4Ca1RpD7fq1HJ8AUCDW0F3XkQ
+         RqEg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hVkRl3Lu;
+       spf=pass (google.com: domain of vclaes1986@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=vclaes1986@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <vclaes1986@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b56sor44077edb.9.2019.07.09.12.46.32
+        (Google Transport Security);
+        Tue, 09 Jul 2019 12:46:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vclaes1986@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hVkRl3Lu;
+       spf=pass (google.com: domain of vclaes1986@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=vclaes1986@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:message-id:mime-version:subject:date:in-reply-to:cc:to
+         :references;
+        bh=f4AkhzfrRy4Tq4DoBdF5FZKfictTxN45+A4hWRisxc0=;
+        b=hVkRl3LuRrXJ6y/zgm57Zg0RZhuTwqRSAizyq5Cs7Y27UfBTdLbnUhav3rq+hqdFKT
+         LTSD6oYpJjbb3VbRNkzqqx9RgdWzUU6R+c+B3+Rcbdox89+f6xy066SWPKEAcsdZT7Oo
+         8/XUrE/aWBqMVbHvBNds0LDjhWmzLsNPiVrp21kmDtFd92/kePqxgVQdlRlS4eWa4eVr
+         +5YN90ePiEkVeAOdu3uVNK11R/r6pdKAVEYP9hC0FCjR9c+DgE2HxdcEQhMjkHwPK5Aa
+         uKi01wxjDiA+1tT4sBHKtEwECTtlIi5NY4LxKX/GPC2wJPIPdCIvSWgFkPI+O4SPiel5
+         AyEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:message-id:mime-version:subject:date
+         :in-reply-to:cc:to:references;
+        bh=f4AkhzfrRy4Tq4DoBdF5FZKfictTxN45+A4hWRisxc0=;
+        b=odSRiFIDYmsj9xLJwRczPpgkNQFpG2QFwljbU+l8EUEIVy5u8j/jwgNFTm3GF8OK9G
+         DhRpoTF5dbx0MXznPNMBEurgd73TbzUzpkBvdmAqAFjcweVjEW4TCotZaoAggbEmk0jn
+         5Un0ARV5QrgN/qPIM5GSdaQ6SdlXVEMUWoGufev5a+SXreTVLww5U6+GhbmW14JXpZIU
+         nSHZVTTNEgD+R64O4RHVh0yYLEOsvVmhqAgbqPbxTasbWW12Js865XHhJ1SaQP/N0ypT
+         jH2QeNImRG4bkHKwKEbPqQuioCdIjDOGnIorja65w+8B+c37Rx9wUJ1lTBsxrL033kZE
+         WlUQ==
+X-Gm-Message-State: APjAAAV/oLIR0oXDQKTtiB8Z49AQTSKpYYZMdD1dub6kR554ZUYQOJLa
+	tMIQOjuVbFUNhgbdMocZjD0aSaZawe8=
+X-Google-Smtp-Source: APXvYqwbOC1XYzFcnaO19DiWfthZZYr95r05BPJc68y8h2pW0DplHLjLcI14AGtNYxhnQXB0TxNAGQ==
+X-Received: by 2002:a05:6402:145a:: with SMTP id d26mr20699634edx.10.1562701592244;
+        Tue, 09 Jul 2019 12:46:32 -0700 (PDT)
+Return-Path: <vclaes1986@gmail.com>
+Received: from ptr-902mt2015wg8eppbtcu.18120a2.ip6.access.telenet.be (ptr-902mt2015wg8eppbtcu.18120a2.ip6.access.telenet.be. [2a02:1811:2c04:5e00:9de7:a09:c028:65e])
+        by smtp.gmail.com with ESMTPSA id g7sm9982eda.52.2019.07.09.12.46.31
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 09 Jul 2019 12:46:31 -0700 (PDT)
+From: Vincent Claes <vclaes1986@gmail.com>
+Message-Id: <37BCBDD1-3BB5-45ED-AC5F-C06F6B4E0CA2@gmail.com>
+Content-Type: multipart/alternative;
+	boundary="Apple-Mail=_18F48294-88B7-4717-BCBD-CF5571BA281F"
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
+Subject: Re: Another email
+Date: Tue, 9 Jul 2019 21:46:31 +0200
+In-Reply-To: <F9D1AE8B-5C4C-4A22-85C3-01F6650D393B@gmail.com>
+Cc: Vincent Claes <vincent.v.claes@gmail.com>
+To: Vincent Claes <vclaes1986@gmail.com>
+References: <F9D1AE8B-5C4C-4A22-85C3-01F6650D393B@gmail.com>
+X-Mailer: Apple Mail (2.3445.104.11)
+
+
+--Apple-Mail=_18F48294-88B7-4717-BCBD-CF5571BA281F
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
+
+A reply is following here
+
+> On 9 Jul 2019, at 21:45, Vincent Claes <vclaes1986@gmail.com> wrote:
+>=20
+> Some random content
+>=20
+> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do =
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad =
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip =
+ex ea commodo consequat. Duis aute irure dolor in reprehenderit in =
+voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur =
+sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt =
+mollit anim id est laborum."
+>=20
+>=20
+
+
+--Apple-Mail=_18F48294-88B7-4717-BCBD-CF5571BA281F
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=us-ascii
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; =
+charset=3Dus-ascii"></head><body style=3D"word-wrap: break-word; =
+-webkit-nbsp-mode: space; line-break: after-white-space;" class=3D"">A =
+reply is following here<br class=3D""><div><br class=3D""><blockquote =
+type=3D"cite" class=3D""><div class=3D"">On 9 Jul 2019, at 21:45, =
+Vincent Claes &lt;<a href=3D"mailto:vclaes1986@gmail.com" =
+class=3D"">vclaes1986@gmail.com</a>&gt; wrote:</div><br =
+class=3D"Apple-interchange-newline"><div class=3D""><meta =
+http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii" =
+class=3D""><div style=3D"word-wrap: break-word; -webkit-nbsp-mode: =
+space; line-break: after-white-space;" class=3D"">Some random =
+content<div class=3D""><br class=3D""></div><div class=3D""><p =
+style=3D"margin: 0px 0px 15px; padding: 0px; text-align: justify; =
+font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; =
+font-variant-ligatures: normal; orphans: 2; widows: 2; background-color: =
+rgb(255, 255, 255);" class=3D"">"Lorem ipsum dolor sit amet, consectetur =
+adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore =
+magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco =
+laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor =
+in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla =
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa =
+qui officia deserunt mollit anim id est laborum."</p></div><div =
+class=3D""><br class=3D""></div></div></div></blockquote></div><br =
+class=3D""></body></html>=
+
+--Apple-Mail=_18F48294-88B7-4717-BCBD-CF5571BA281F--
