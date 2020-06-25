@@ -16,7 +16,7 @@ S3 raw/ -> Lambda unzip -> Glue Job unzip -> S3 unzip -> Lambda extract -> S3 ex
 
 ### Step 1: Configure AWS
 
-Create an admin User using the AWS IAM Management Console to set the credentials under a [serverless] section in the credentials file located in:
+Create an admin User using the AWS IAM Management Console to set the credentials under a [serverless](https://www.serverless.com/) section in the credentials file located in:
 
 `/.aws/credentials` with the name `serverless`. By adding the credentials to the AWS credentials file, you can use any AWS command using the desired profile. It should look something like this:
 
