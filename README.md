@@ -4,7 +4,7 @@
 
 ### Why is this particular project important?
 
-The purpose of this project was to learn to build out and process a tremendous amount of data without too much infrastructure configuration. Doing this will help simplify and accelerate the infrastructure provisioning process that will save time and money.
+The purpose of this project was to learn to build out and process a tremendous amount of data without too much infrastructure configuration. Doing this will help simplify and accelerate the infrastructure provisioning process that will save time and money, ultimately allowing the Data Scientist/Data Analyst to focus more on data exploration, feature engineering and modeling.
 
 ### What are we doing?
 
