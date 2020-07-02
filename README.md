@@ -10,6 +10,10 @@ The purpose of this project was to learn to build out and process a tremendous a
 
 We are extracting contents from email messages (.eml). Starting from a .zip file that contains the email messages, an event in one folder of our S3 bucket will trigger a Lambda function to do some processing. The result of the Lambda function will be dumped in another folder in our S3 bucket, which will then trigger another Lambda function to do some processing. In total, this data pipeline has 3 processing steps: **unzip, extract and load,** utilizing Python and PySpark.
 
+### Why did I choose Amazon Glue over Lambda to unzip?
+
+Lambda functions are more cost effective and efficient for much smaller workloads. Once you hit that threshold of either way too much data or way too much computationally intensive jobs, this is where Glue jumps ahead. With Lambda, you're limited within the confines of its timeout and RAM/CPU limitations. It is also much easier to work with Glue since it is actually designed for ETL, and removes quite a bit of the work from scratch like you would with Lambda. For example, Glue Crawling your input data to populate your data catalog, AKA, Amazon S3.
+
 ### The Serverless data pipeline design
 
 S3 raw/ -> Lambda unzip -> Glue Job unzip -> S3 unzip -> Lambda extract -> S3 extract/ -> Lambda load -> Glue Crawler load -> Athena
