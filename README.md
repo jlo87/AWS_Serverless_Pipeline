@@ -6,6 +6,8 @@
 
 The purpose of this project was to learn to build out and process a tremendous amount of data without too much infrastructure configuration. Doing this will help simplify and accelerate the infrastructure provisioning process that will save time and money, ultimately allowing the Data Scientist/Data Analyst to focus more on data exploration, feature engineering and modeling.
 
+Serverless applications allow you to stream data in _real-time_, process huge volumes of data in S3, and run SQL queries and visualizations against that data without managing server provisioning, installation, patching, or capacity scaling. This frees up your users to spend more time interpreting the data and deriving business value for your organization.
+
 ### What are we doing?
 
 We are extracting contents from email messages (.eml). Starting from a .zip file that contains the email messages, an event in one folder of our S3 bucket will trigger a Lambda function to do some processing. The result of the Lambda function will be dumped in another folder in our S3 bucket, which will then trigger another Lambda function to do some processing. In total, this data pipeline has 3 processing steps: **unzip, extract and load,** utilizing Python and PySpark.
@@ -17,6 +19,7 @@ Lambda functions are more cost effective and efficient for much smaller workload
 ### The Serverless data pipeline design
 
 S3 raw/ -> Lambda unzip -> Glue Job unzip -> S3 unzip -> Lambda extract -> S3 extract/ -> Lambda load -> Glue Crawler load -> Athena
+
 
 ### Step 1: Configure AWS
 
